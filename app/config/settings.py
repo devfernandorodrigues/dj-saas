@@ -14,6 +14,7 @@ ALLOWED_HOSTS = config(
 )
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
