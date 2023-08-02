@@ -1,19 +1,32 @@
 {% load static tailwind_tags %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Django Tailwind</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    {% tailwind_css %}
-  </head>
 
-  <body class="bg-gray-50 font-serif leading-normal tracking-normal">
-    <div class="container mx-auto">
-      <section class="flex items-center justify-center h-screen">
-        <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-      </section>
-    </div>
-  </body>
+<head>
+  <title>Django Tailwind</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+  {% tailwind_css %}
+  {% block head %}{% endblock %}
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 font-serif leading-normal tracking-normal" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  {% block body %}{% endblock %}
+  {% block script %}{% endblock %}
+</body>
+
 </html>
