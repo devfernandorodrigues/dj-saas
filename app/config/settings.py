@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     # 3rdy party
     "tailwind",
     "django_browser_reload",
+    "djstripe",
     # apps
     "theme",
 ]
@@ -101,3 +102,12 @@ TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+STRIPE_LIVE_PUBLIC_KEY = config("STRIPE_LIVE_PUBLIC_KEY")
+STRIPE_LIVE_SECRET_KEY = config("STRIPE_LIVE_SECRET_KEY")
+STRIPE_TEST_PUBLIC_KEY = config("STRIPE_TEST_PUBLIC_KEY")
+STRIPE_TEST_SECRET_KEY = config("STRIPE_TEST_SECRET_KEY")
+STRIPE_LIVE_MODE = config("STRIPE_LIVE_MODE", default=True, cast=bool)
+DJSTRIPE_WEBHOOK_SECRET = config("DJSTRIPE_WEBHOOK_SECRET")
+DJSTRIPE_USE_NATIVE_JSON_FIELD = True
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
