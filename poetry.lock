@@ -468,6 +468,20 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-components"
+version = "0.28.1"
+description = "A way to create simple reusable template components in Django."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_components-0.28.1-py3-none-any.whl", hash = "sha256:fe550bcfcc97e46e98378f0defa04f098d1834936c4d2c585975a36a13031458"},
+    {file = "django_components-0.28.1.tar.gz", hash = "sha256:673cab142b6ea0930da500334591be9a6a42854629c191bceed284556cb0229f"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-htmx"
 version = "1.16.0"
 description = "Extensions for using Django with htmx."
@@ -1017,4 +1031,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "026a524e0626bb268479c4bf28ea491b43265c9ba982c877566cc2677e0816a1"
+content-hash = "09b2f54464f4b48866c1f3b5dc5e8aaa2296a82e2f491d8e051d15c27902039c"

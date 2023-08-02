@@ -167,3 +167,6 @@ cython_debug/
 
 # Postgres data
 .pgdata
+
+# MacOS
+.DS_Store

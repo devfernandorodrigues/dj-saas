@@ -20,7 +20,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
     # 3rdy party
     "allauth",
     "allauth.account",
@@ -29,6 +28,8 @@ INSTALLED_APPS = [
     "django_browser_reload",
     "djstripe",
     "django_htmx",
+    "django_components",
+    "django_components.safer_staticfiles",
     # apps
     "core.apps.CoreConfig",
     "theme.apps.ThemeConfig",
@@ -54,13 +55,25 @@ TEMPLATES = [
         "DIRS": [
             BASE_DIR / "templates",
         ],
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+            ],
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    [
+                        "django.template.loaders.filesystem.Loader",
+                        "django.template.loaders.app_directories.Loader",
+                        "django_components.template_loader.Loader",
+                    ],
+                )
+            ],
+            "builtins": [
+                "django_components.templatetags.component_tags",
             ],
         },
     },
@@ -101,6 +114,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "components",
+]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
