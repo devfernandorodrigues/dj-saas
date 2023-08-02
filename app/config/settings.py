@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     "django_browser_reload",
     "djstripe",
     # apps
-    "theme",
+    "core.apps.CoreConfig",
+    "theme.apps.ThemeConfig",
 ]
 
 MIDDLEWARE = [
@@ -111,3 +112,5 @@ STRIPE_LIVE_MODE = config("STRIPE_LIVE_MODE", default=True, cast=bool)
 DJSTRIPE_WEBHOOK_SECRET = config("DJSTRIPE_WEBHOOK_SECRET")
 DJSTRIPE_USE_NATIVE_JSON_FIELD = True
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
+
+AUTH_USER_MODEL = "core.User"
