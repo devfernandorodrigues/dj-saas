@@ -17,6 +17,7 @@ django-allauth = "^0.54.0"
 django-jazzmin = "^2.6.0"
 django-htmx = "^1.16.0"
 django-components = "^0.28.1"
+babel = "^2.12.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
