@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "tailwind",
     "django_browser_reload",
     "djstripe",
+    "django_htmx",
     # apps
     "core.apps.CoreConfig",
     "theme.apps.ThemeConfig",
@@ -41,6 +42,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
