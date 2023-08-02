@@ -37,6 +37,8 @@ format = "black . && isort ."
 lint = "ruff . && black --check . && isort ."
 post_test = "coverage html"
 run = "python manage.py runserver 0.0.0.0:8000"
+tailwind_install = "python manage.py tailwind install"
+tailwind_start = "python manage.py tailwind start"
 test = "pytest -s -x --cov=. -vv"
 
 [tool.pytest.ini_options]
