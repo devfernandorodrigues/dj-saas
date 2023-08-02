@@ -6,8 +6,38 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-python = "^3.11"
 django = "^4.2.4"
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+isort = "^5.12.0"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-django = "^4.5.2"
+ruff = "^0.0.282"
+taskipy = "^1.12.0"
+
+[tool.ruff]
+line-length = 79
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+line_length = 79
+profile = "black"
+
+[tool.taskipy.tasks]
+format = "black . && isort ."
+lint = "ruff . && black --check . && isort ."
+post_test = "coverage html"
+run = "python manage.py runserver 0.0.0.0:8000"
+test = "pytest -s -x --cov=. -vv"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_test.py"]
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
