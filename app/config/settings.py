@@ -1,14 +1,17 @@
 from pathlib import Path
 
+from decouple import config
+from dj_database_url import parse as db_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = (
-    "django-insecure-o*k@&1xq(p@jtocc6-0fm7m^hu!6p*yblkxxcxkur55-nwjf7&"
+SECRET_KEY = config("SECRET_KEY")
+
+DEBUG = config("DEBUG", default=False, cast=bool)
+
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS", default=[], cast=lambda x: x.split(",")
 )
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -17,6 +20,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 3rdy party
+    "tailwind",
 ]
 
 MIDDLEWARE = [
@@ -34,7 +39,9 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -50,11 +57,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": config(
+        "DATABASE_URL",
+        default=f"sqlite:///{BASE_DIR}/db.sqlite3",
+        cast=db_url,
+    )
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
