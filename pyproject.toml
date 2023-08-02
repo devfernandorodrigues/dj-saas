@@ -8,6 +8,8 @@ version = "0.1.0"
 [tool.poetry.dependencies]
 django = "^4.2.4"
 python = "^3.11"
+dj-database-url = "^2.0.0"
+python-decouple = "^3.8"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
