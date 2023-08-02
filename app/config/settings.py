@@ -21,6 +21,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rdy party
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "tailwind",
     "django_browser_reload",
     "djstripe",
@@ -114,3 +117,18 @@ DJSTRIPE_USE_NATIVE_JSON_FIELD = True
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
 
 AUTH_USER_MODEL = "core.User"
+
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+
+SITE_ID = 1
