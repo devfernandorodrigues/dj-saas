@@ -6,9 +6,11 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-django = "^4.2.4"
-python = "^3.11"
 dj-database-url = "^2.0.0"
+django = "^4.2.4"
+django-tailwind = {extras = ["reload"], version = "^3.6.0"}
+psycopg2-binary = "2.9.3"
+python = "^3.11"
 python-decouple = "^3.8"
 
 [tool.poetry.group.dev.dependencies]
