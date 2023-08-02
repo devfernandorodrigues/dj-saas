@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    restart: always
+
+  app:
+    build:
+      context: .
+    command: task run
+    working_dir: /project/app
+    volumes:
+      - .:/project
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  tailwind:
+    build:
+      context: .
+    command: >
+      sh -c "task tailwind_install && task tailwind_start"
+    working_dir: /project/app
+    volumes:
+      - .:/project
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    tty: true
+
+  stripe:
+    image: stripe/stripe-cli:v1.7.4
+    command: listen --forward-to http://app:8000/stripe/webhook/
+    depends_on:
+      - app
+    restart: always
+    env_file:
+      - .env
+    platform: linux/amd64
