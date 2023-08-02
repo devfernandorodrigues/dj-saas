@@ -6,3 +6,4 @@
 - Stripe
 - Tailwind
 - Postgres
+- HTMX
