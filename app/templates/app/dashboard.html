@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Django SaaS{% endblock %}
+
+{% block body %}
+<div class"flex justify-between m-2 items-center">
+  {% component_block "drawer" %}
+    {% fill "main" %}
+      <main>
+        {% for subscription in subscriptions %}
+          You're subscribed in the {{ subscription.plan.product.name }} plan
+        {% endfor %}
+      </main>
+    {% endfill %}
+  {% endcomponent_block %}
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Django SaaS{% endblock %}
+
+{% block body %}
+<div class"flex justify-between m-2 items-center">
+  {% component_block "drawer" %}
+    {% fill "main" %}
+      <div>
+        <button class="btn btn-error" onclick="modal.showModal()">
+          Cancel subscription
+        </button>
+        <dialog id="modal" class="modal">
+          <form method="POST" class="modal-box" action="{% url 'core:subscription_cancel' %}">
+            {% csrf_token %}
+            <h3 class="font-bold text-lg">Are you sure?</h3>
+            <p class="py-4">Your subscription will be canceled</p>
+            <div class="modal-action">
+              <button type="submit" class="btn btn-primary">Confirm</button>
+              <button class="btn">Close</button>
+            </div>
+          </form>
+        </dialog>
+      </div>
+    {% endfill %}
+  {% endcomponent_block %}
+</div>
+{% endblock %}

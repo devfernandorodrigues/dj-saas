@@ -161,8 +161,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = "/dashboard"
-SIGNUP_REDIRECT_URL = "/dashboard"
+LOGIN_REDIRECT_URL = "core:dashboard"
+SIGNUP_REDIRECT_URL = "core:dashboard"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 

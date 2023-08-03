@@ -1,0 +1,17 @@
+<div class="form-control w-full">
+  <label class="label" for=" {{ id }}">
+    <span class="label-text text-black">{{ label }}</span>
+  </label>
+  <input type="{{ type }}" placeholder="{{ placeholder }}" name="{{ name }}" id={{ id }}
+    class="input {% if errors %}input-error{% endif %} input-bordered w-full" required="{{ required }}"
+    value="{{ value }}" {% if disabled %}disabled{% endif %} />
+  <label class="label">
+    <span class="label-text-alt">
+      {% if errors %}
+      {% for error in errors %}
+      <p class="mt-2 text-sm text-red-600"> {{ error }} </p>
+      {% endfor %}
+      {% endif %}
+    </span>
+  </label>
+</div>

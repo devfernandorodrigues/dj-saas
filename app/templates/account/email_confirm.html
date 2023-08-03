@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+{% load account %}
+
+{% block title %}Django SaaS{% endblock %} 
+
+{% block body %}
+
+<section class="bg-blue-600 h-screen flex justify-center items-center">
+  <div
+    class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 max-w-lg sm:min-h-screen"
+  >
+    <a
+      href="#"
+      class="flex items-center mb-6 text-2xl font-semibold text-white"
+    >
+      Django SaaS
+    </a>
+    <div class="w-full bg-white rounded-lg shadow">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8 min-w-full">
+        <h1
+          class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
+        >
+          Confirm your email
+        </h1>
+        {% if confirmation %}
+          {% user_display confirmation.email_address.user as user_display %}
+            <p>Please confirm that <a href="mailto:{{ confirmation.email_address.email }}">{{ confirmation.email_address.email }}</a> is an email address for user {{ user_display }}</p>
+            <form
+              class="space-y-4 md:space-y-6"
+              action="{% url 'account_confirm_email' confirmation.key %}"
+              method="POST"
+            >
+              {% csrf_token %} 
+              <button type="submit" class="btn btn-primary w-full">Confirm</button>
+            </form>
+        {% else %}
+          {% url 'account_email' as email_url %}
+            <p>This email confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new email confirmation request</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
