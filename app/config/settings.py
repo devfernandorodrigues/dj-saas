@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django_htmx",
     "django_components",
     "django_components.safer_staticfiles",
+    "django_extensions",
     # apps
     "core.apps.CoreConfig",
     "theme.apps.ThemeConfig",
