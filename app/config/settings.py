@@ -1,7 +1,11 @@
+import re
 from pathlib import Path
 
 from decouple import config
 from dj_database_url import parse as db_url
+from django.template import base
+
+base.tag_re = re.compile(base.tag_re.pattern, re.DOTALL)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
