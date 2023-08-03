@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.humanize",
     # 3rdy party
     "allauth",
     "allauth.account",
@@ -152,3 +153,6 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = "/dashboard"
+SIGNUP_REDIRECT_URL = "/dashboard"
