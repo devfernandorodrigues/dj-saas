@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django_components",
     "django_components.safer_staticfiles",
     "django_extensions",
+    "debug_toolbar",
     # apps
     "core.apps.CoreConfig",
     "theme.apps.ThemeConfig",
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -163,3 +165,13 @@ LOGIN_REDIRECT_URL = "/dashboard"
 SIGNUP_REDIRECT_URL = "/dashboard"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+if DEBUG:
+    # hack for debug_toolbar using docker
+    import socket
+
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + [
+        "127.0.0.1",
+        "10.0.2.2",
+    ]

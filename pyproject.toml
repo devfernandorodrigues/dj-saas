@@ -6,19 +6,21 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
+babel = "^2.12.1"
 dj-database-url = "^2.0.0"
 dj-stripe = "^2.8.1"
 django = "^4.2.4"
+django-allauth = "^0.54.0"
+django-components = "^0.28.1"
+django-debug-toolbar = "^4.1.0"
+django-extensions = "^3.2.3"
+django-htmx = "^1.16.0"
+django-jazzmin = "^2.6.0"
 django-tailwind = {extras = ["reload"], version = "^3.6.0"}
+ipython = "^8.14.0"
 psycopg2-binary = "2.9.3"
 python = "^3.11"
 python-decouple = "^3.8"
-django-allauth = "^0.54.0"
-django-jazzmin = "^2.6.0"
-django-htmx = "^1.16.0"
-django-components = "^0.28.1"
-babel = "^2.12.1"
-ipython = "^8.14.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
